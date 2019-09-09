@@ -1,5 +1,5 @@
 {
-  "name": "@lefapps/{{yourpackagename}}",
+  "name": "@lefapps/uploader",
   "version": "1.0.0",
   "description": "React package for translations and cms",
   "main": "./lib/index.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LEFapps/{{yourpackagename}}.git"
+    "url": "git+https://github.com/LEFapps/uploader.git"
   },
   "author": "LEF",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LEFapps/{{yourpackagename}}/issues"
+    "url": "https://github.com/LEFapps/uploader/issues"
   },
-  "homepage": "https://github.com/LEFapps/{{yourpackagename}}",
+  "homepage": "https://github.com/LEFapps/uploader",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
@@ -44,6 +44,7 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.0"
+    "@babel/polyfill": "^7.4.0",
+    "lodash": "^4.17.15"
   }
 }
