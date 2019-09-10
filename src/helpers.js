@@ -1,6 +1,7 @@
 import kebabCase from 'lodash/kebabCase'
 import deburr from 'lodash/deburr'
 const colors = {
+  zip: 'ROSYBROWN',
   pdf: 'FIREBRICK',
   doc: 'ROYALBLUE',
   docx: 'ROYALBLUE',
@@ -9,7 +10,10 @@ const colors = {
   ppt: 'TOMATO',
   pptx: 'TOMATO',
   tiff: 'CADETBLUE',
-  zip: 'ROSYBROWN'
+  jpg: 'GOLD',
+  jpeg: 'GOLD',
+  png: 'DARKKHAKI',
+  gif: 'DEEPPINK'
 }
 const _randomSource =
   'azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789'

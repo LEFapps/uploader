@@ -128,8 +128,8 @@ class UserFile extends React.Component {
   }
 
   finish () {
-    clearInterval(this._progressInterval)
-    this.props.onFinish(this.state)
+    const { name, isImage, local, url, error } = this.state
+    this.props.onFinish({ name, isImage, local, url, error })
   }
 
   render () {

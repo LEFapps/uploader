@@ -4,7 +4,17 @@ import { Spinner, Alert, ButtonGroup, Button } from 'reactstrap'
 
 import { supportedImages, typeColor } from './helpers'
 
-const Preview = ({ children, error, metaFields, _remove, ...props }) => {
+const replaceWithType = (node, type) => {
+  const tc = typeColor(type.toLowerCase())
+  const parent = node.parentElement
+  const child = document.createElement('strong')
+  child.style.color = tc.color
+  child.innerText = type.toUpperCase()
+  parent.appendChild(child)
+  node.style.display = 'none'
+}
+
+const Preview = ({ children, error, extras, _remove, ...props }) => {
   const { url, name, local } = props
   const type = name ? name.split('.').pop() : url ? url.split('.').pop() : ''
   const basename = name ? name.slice(0, name.lastIndexOf('-')) : url || ''
@@ -40,10 +50,15 @@ const Preview = ({ children, error, metaFields, _remove, ...props }) => {
         style={{ width: '6em', textAlign: 'center', verticalAlign: 'middle' }}
       >
         {url || local ? (
-          <a href={url} download={name} target={'_blank'}>
+          <a
+            href={url || ''}
+            download={name}
+            target={'_blank'}
+            style={{ color: 'inherit' }}
+          >
             {isImage ? (
               <img
-                src={local || url}
+                src={local || url || ''}
                 alt={'preview'}
                 style={{
                   display: 'block',
@@ -51,6 +66,7 @@ const Preview = ({ children, error, metaFields, _remove, ...props }) => {
                   height: '6em',
                   objectFit: 'cover'
                 }}
+                onError={({ target }) => replaceWithType(target, type)}
               />
             ) : (
               <strong style={typeColor(type.toLowerCase())}>
@@ -64,10 +80,10 @@ const Preview = ({ children, error, metaFields, _remove, ...props }) => {
       </th>
       <td style={{ verticalAlign: 'middle' }}>
         <strong>{basename}</strong>
-        {metaFields ? (
+        {extras ? (
           <>
             <br />
-            {metaFields}
+            {extras}
           </>
         ) : null}
       </td>
