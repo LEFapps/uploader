@@ -62,27 +62,25 @@ class Wrapper extends React.Component {
 }
 
 Wrapper.propTypes = {
-  // onChange: PropTypes.func.isRequired,
-  // onError: PropTypes.func,
-  // thumbnails: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     label: PropTypes.string.isRequired,
-  //     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-  //       .isRequired,
-  //     height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-  //       .isRequired,
-  //     crop: PropTypes.bool,
-  //     retina: PropTypes.bool,
-  //     quality: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-  //   })
-  // ),
-  // multiple: PropTypes.bool,
-  // label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  // placeholder: PropTypes.string,
-  // id: PropTypes.string,
-  // className: PropTypes.string,
-  // value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  // invalid: PropTypes.bool
+  onChange: PropTypes.func.isRequired,
+  thumbnails: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
+      height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
+      crop: PropTypes.bool,
+      retina: PropTypes.bool,
+      quality: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    })
+  ),
+  multiple: PropTypes.bool,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  placeholder: PropTypes.string,
+  id: PropTypes.string,
+  className: PropTypes.string,
+  invalid: PropTypes.bool
 }
 
 export default Wrapper

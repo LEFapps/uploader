@@ -94,4 +94,14 @@ const Preview = ({ children, error, extras, _remove, ...props }) => {
   )
 }
 
+Preview.propTypes = {
+  name: PropTypes.string,
+  url: PropTypes.string,
+  local: PropTypes.string,
+  error: PropTypes.string,
+  children: PropTypes.element,
+  extras: PropTypes.element,
+  _remove: PropTypes.func
+}
+
 export default Preview

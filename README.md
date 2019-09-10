@@ -79,6 +79,7 @@ Prop | Type | Required<br>Default | Description
 --- | --- | --- | ---
 label | String<br>Component | ✗ | Label to display above the file input
 placeholder | String | ✗ | Label to display inside the file input
+name | String | ✓ | Name attribute of the file input element
 multiple | Bool | false | Allow multiple files to be selected for upload
 uploader | Object<br>Class | ✓ | Logic to send the file to your storage of choice<br>See below for specific information. Works seamlessly with edgee:slingshot directives.
 sizes | [Object] | ✗ | Thumbnail configuration for image files

@@ -1,4 +1,9 @@
-import { hasToBlobSupport, toBlob, promiseBlobFromCanvas } from './blob'
+import {
+  hasToBlobSupport,
+  toBlob,
+  promiseBlobFromCanvas,
+  promiseReader
+} from './blob'
 
 const setQuality = quality =>
   quality > 100

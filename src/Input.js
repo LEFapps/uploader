@@ -42,6 +42,7 @@ FileInput.propTypes = {
   multiple: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   placeholder: PropTypes.string,
+  name: PropTypes.string,
   invalid: PropTypes.bool
 }
 

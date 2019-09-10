@@ -1,5 +1,6 @@
 import kebabCase from 'lodash/kebabCase'
 import deburr from 'lodash/deburr'
+
 const colors = {
   zip: 'ROSYBROWN',
   pdf: 'FIREBRICK',
