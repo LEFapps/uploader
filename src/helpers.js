@@ -1,8 +1,19 @@
 import kebabCase from 'lodash/kebabCase'
 import deburr from 'lodash/deburr'
-
+const colors = {
+  pdf: 'FIREBRICK',
+  doc: 'ROYALBLUE',
+  docx: 'ROYALBLUE',
+  xls: 'SEAGREEN',
+  xlsx: 'SEAGREEN',
+  ppt: 'TOMATO',
+  pptx: 'TOMATO',
+  tiff: 'CADETBLUE',
+  zip: 'ROSYBROWN'
+}
 const _randomSource =
   'azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789'
+
 const random = length => {
   length = !length ? 8 : length
   const range = _randomSource.length
@@ -35,4 +46,6 @@ const retinaName = name =>
 
 const supportedImages = ['image/jpeg', 'image/png', 'jpg', 'jpeg', 'png']
 
-export { safeName, retinaSize, retinaName, random, supportedImages }
+const typeColor = type => (type ? { color: colors[type] || '' } : {})
+
+export { safeName, retinaSize, retinaName, random, supportedImages, typeColor }

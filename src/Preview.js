@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Spinner, Alert, ButtonGroup, Button } from 'reactstrap'
 
-import { supportedImages } from './helpers'
+import { supportedImages, typeColor } from './helpers'
 
 const Preview = ({ children, error, metaFields, _remove, ...props }) => {
-  const { url, name } = props
+  const { url, name, local } = props
   const type = name ? name.split('.').pop() : url ? url.split('.').pop() : ''
   const basename = name ? name.slice(0, name.lastIndexOf('-')) : url || ''
   const isImage = supportedImages.includes(type.toLowerCase())
@@ -39,21 +39,25 @@ const Preview = ({ children, error, metaFields, _remove, ...props }) => {
         className={'p-0'}
         style={{ width: '6em', textAlign: 'center', verticalAlign: 'middle' }}
       >
-        {url ? (
-          isImage ? (
-            <img
-              src={url}
-              alt={'preview'}
-              style={{
-                display: 'block',
-                width: '100%',
-                height: '6em',
-                objectFit: 'cover'
-              }}
-            />
-          ) : (
-            <strong>{type.toUpperCase()}</strong>
-          )
+        {url || local ? (
+          <a href={url} download={name} target={'_blank'}>
+            {isImage ? (
+              <img
+                src={local || url}
+                alt={'preview'}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: '6em',
+                  objectFit: 'cover'
+                }}
+              />
+            ) : (
+              <strong style={typeColor(type.toLowerCase())}>
+                {type.toUpperCase()}
+              </strong>
+            )}
+          </a>
         ) : (
           <Spinner size='sm' color='primary' />
         )}
