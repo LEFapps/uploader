@@ -99,8 +99,6 @@ Preview.propTypes = {
   url: PropTypes.string,
   local: PropTypes.string,
   error: PropTypes.string,
-  children: PropTypes.element,
-  extras: PropTypes.element,
   _remove: PropTypes.func
 }
 

@@ -63,7 +63,8 @@ class Wrapper extends React.Component {
 
 Wrapper.propTypes = {
   onChange: PropTypes.func.isRequired,
-  thumbnails: PropTypes.arrayOf(
+  uploader: PropTypes.object.isRequired,
+  sizes: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])

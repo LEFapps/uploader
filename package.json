@@ -9,7 +9,7 @@
     "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
     "build-dev": "cross-env BABEL_ENV=development babel src --out-dir lib",
     "dev": "watch 'npm run build-dev' src",
-    "prepublish": "npm run clean && npm run lint && npm run build"
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
