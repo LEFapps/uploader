@@ -1,5 +1,6 @@
 import React from 'react'
 import { Progress } from 'reactstrap'
+import isString from 'lodash/isString'
 
 import Preview from './Preview'
 import { safeName, retinaName, retinaSize, supportedImages } from './helpers'
@@ -105,7 +106,9 @@ class UserFile extends React.Component {
   uploadFile = file => {
     this.props.uploader.send(file, (error, url) => {
       if (error) {
-        this.setState({ error })
+        this.setState({
+          error: isString(error) ? error : JSON.stringify(error)
+        })
       } else {
         url = this.state.url || url
         const { thumbnails } = this.state

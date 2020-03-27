@@ -24,7 +24,7 @@ const Preview = ({ children, error, extras, _remove, ...props }) => {
       <td colSpan={_remove ? 2 : 3}>
         <strong>{name}</strong>
         <br />
-        <Alert color={'danger'}>{error.reason}</Alert>
+        <Alert color={'danger'}>{error}</Alert>
       </td>
       {_remove ? (
         <td>
