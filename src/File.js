@@ -26,13 +26,13 @@ class UserFile extends React.Component {
       source,
       name,
       isImage,
-      local: false,
-      url: false,
+      local: '',
+      url: '',
       thumbnails: [],
       resized: 0,
       progress: -1,
       uploaded: 0,
-      error: null
+      error: ''
     }
   }
 
