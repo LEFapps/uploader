@@ -36,23 +36,26 @@ class Wrapper extends React.Component {
         className={'reactCustomFileInput ' + (className || '')}
       >
         <div className={'reactCustomFileInput__value'}>
-          <Table>
-            <thead />
-            <tbody>
-              {children}
-              {(files || []).map((f, j) =>
-                f ? (
-                  <UserFile
-                    file={f}
-                    sizes={sizes}
-                    uploader={uploader}
-                    onFinish={value => this.setFile(value, j)}
-                    key={j}
-                  />
-                ) : null
-              )}
-            </tbody>
-          </Table>
+          {((children && children.length) || (files && !!files.length)) && (
+            <Table>
+              <thead />
+              <tbody>
+                {children}
+                {files &&
+                  files.map((f, j) =>
+                    f ? (
+                      <UserFile
+                        file={f}
+                        sizes={sizes}
+                        uploader={uploader}
+                        onFinish={value => this.setFile(value, j)}
+                        key={j}
+                      />
+                    ) : null
+                  )}
+              </tbody>
+            </Table>
+          )}
         </div>
         <FileInput {...this.props} onChange={this.addFiles} />
         {error ? <Alert color={'danger'}>{error}</Alert> : null}

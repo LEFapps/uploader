@@ -26,8 +26,8 @@ const Preview = ({ children, error, extras, _remove, ...props }) => {
         <br />
         <Alert color={'danger'}>{error}</Alert>
       </td>
-      {_remove ? (
-        <td>
+      <td>
+        {_remove ? (
           <ButtonGroup>
             <Button
               color={'danger'}
@@ -40,8 +40,8 @@ const Preview = ({ children, error, extras, _remove, ...props }) => {
               ✕
             </Button>
           </ButtonGroup>
-        </td>
-      ) : null}
+        ) : null}
+      </td>
     </tr>
   ) : (
     <tr>
