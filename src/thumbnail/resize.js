@@ -1,16 +1,18 @@
+import { supportedImages } from '../helpers'
 import {
   hasToBlobSupport,
   toBlob,
   promiseBlobFromCanvas,
-  promiseReader
+  promiseReader,
+  supportsResize
 } from './blob'
 
 const setQuality = quality =>
   quality > 100
     ? 0.6 // default 60 %
     : quality > 1
-      ? Math.min(1, quality / 100) // max 100 %
-      : Math.max(0.25, quality) // min 25 %
+    ? Math.min(1, quality / 100) // max 100 %
+    : Math.max(0.25, quality) // min 25 %
 
 const generateThumbnail = (
   file,
@@ -18,9 +20,17 @@ const generateThumbnail = (
   { label, quality, crop, ...modifier }
 ) => {
   quality = setQuality(quality)
+  const filename = `${label}/${name}`
   const image = document.createElement('img')
 
   const resize = () => {
+    /* Rename and pass-through original if not supported */
+    const type = (file.name && file.name.split('.').pop()) || file.type
+    if (!supportsResize() || !supportedImages.includes(type)) {
+      console.debug('Passing through unsupported', type, 'as', filename)
+      return new File([file], filename, { type: file.type })
+    }
+
     const canvas = document.createElement('canvas')
 
     /* Set variables */
@@ -69,12 +79,11 @@ const generateThumbnail = (
     else ctx.drawImage(image, 0, 0, width, height)
 
     /* Export Blob from canvas */
-    const filename = `${label}/${name}`
     return hasToBlobSupport
       ? promiseBlobFromCanvas(canvas, file.type).then(blob => {
-        blob.name = filename
-        return blob
-      })
+          blob.name = filename
+          return blob
+        })
       : toBlob(canvas, file.type, filename)
   }
 

@@ -3,8 +3,7 @@ import { Progress } from 'reactstrap'
 import isString from 'lodash/isString'
 
 import Preview from './Preview'
-import { safeName, retinaName, retinaSize, supportedImages } from './helpers'
-import { isSupported } from './thumbnail/blob'
+import { safeName, retinaName, retinaSize } from './helpers'
 import fixOrientation from './thumbnail/rotate'
 import generateThumbnail from './thumbnail/resize'
 
@@ -14,7 +13,7 @@ class UserFile extends React.Component {
     const type = this.props.file.type
     const name = safeName(this.props.file.name)
     const source = new File([this.props.file], name, { type })
-    const isImage = supportedImages.includes(type)
+    const isImage = type.split('/')[0] === 'image'
     this._progressor = isImage
       ? ['init', 'rotate', 'resize', 'upload', 'finish']
       : ['init', 'upload', 'finish']
@@ -59,11 +58,6 @@ class UserFile extends React.Component {
     if (!isImage) {
       /* Not an image */
       this.setState({ resized: true, local: true }, this.setProgress)
-    } else if (!isSupported()) {
-      /* No resizing available */
-      this.setState({ resized: true, local: URL.createObjectURL(source) }, () =>
-        this.setProgress('upload')
-      )
     } else {
       /* Resizing available, throw original at resizer to fix rotation */
       this.setProgress()

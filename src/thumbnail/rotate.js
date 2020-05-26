@@ -1,4 +1,6 @@
+import { supportedImages } from '../helpers'
 import {
+  supportsResize,
   promiseBlobFromCanvas,
   hasToBlobSupport,
   toBlob,
@@ -53,6 +55,12 @@ const fixOrientation = (file, name) => {
   const rotate = orientation => {
     const canvas = document.createElement('canvas')
     const { width, height } = image
+
+    /* Rename and pass-through original if not supported */
+    const type = (file.name && file.name.split('.').pop()) || file.type
+    if (!supportsResize() || !supportedImages.includes(type)) {
+      return new Blob([file], { type: file.type })
+    }
 
     if ([5, 6, 7, 8].includes(orientation)) {
       // 90° rotated

@@ -33,7 +33,7 @@ const hasBlobSupport =
 const hasReaderSupport =
   typeof FileReader !== 'undefined' || typeof URL !== 'undefined'
 
-const isSupported = () =>
+const supportsResize = () =>
   typeof HTMLCanvasElement !== 'undefined' && hasBlobSupport && hasReaderSupport
 
 const toBlob = (canvas, type, name) => {
@@ -89,7 +89,7 @@ export {
   hasToBlobSupport,
   hasBlobSupport,
   hasReaderSupport,
-  isSupported,
+  supportsResize,
   toBlob,
   promiseBlobFromCanvas,
   promiseReader
