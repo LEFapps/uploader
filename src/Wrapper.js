@@ -36,7 +36,7 @@ class Wrapper extends React.Component {
         className={'reactCustomFileInput ' + (className || '')}
       >
         <div className={'reactCustomFileInput__value'}>
-          {((children && children.length) || (files && !!files.length)) && (
+          {(children || (files && !!files.length)) && (
             <Table>
               <thead />
               <tbody>
