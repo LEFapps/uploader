@@ -98,6 +98,7 @@ class UserFile extends React.Component {
   }
 
   uploadFile = file => {
+    if (this.props.metaData) file.metaData = this.props.metaData
     this.props.uploader.send(file, (error, url) => {
       if (error) {
         this.setState({

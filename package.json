@@ -46,10 +46,5 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
     "lodash": "^4.17.15"
-  },
-  "peerDependencies": {
-    "react": "^16.9.0",
-    "prop-types": "^15.7.2",
-    "reactstrap": "^8.0.1"
   }
 }

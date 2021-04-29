@@ -28,7 +28,14 @@ class Wrapper extends React.Component {
     )
   }
   render () {
-    const { id, className, sizes, uploader, children } = this.props
+    const {
+      id,
+      className,
+      sizes,
+      uploader,
+      children,
+      metaData = {}
+    } = this.props
     const { files, error } = this.state
     return (
       <FormGroup
@@ -50,6 +57,7 @@ class Wrapper extends React.Component {
                         uploader={uploader}
                         onFinish={value => this.setFile(value, j)}
                         key={j}
+                        metaData={metaData}
                       />
                     ) : null
                   )}

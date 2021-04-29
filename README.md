@@ -75,17 +75,18 @@ The `Preview` component is exposed to make it possible to render the already upl
 
 ## Configuration
 
-Prop | Type | Required<br>Default | Description
---- | --- | --- | ---
-label | String<br>Component | ✗ | Label to display above the file input
-placeholder | String | ✗ | Label to display inside the file input
-name | String | ✓ | Name attribute of the file input element
-multiple | Bool | false | Allow multiple files to be selected for upload
-uploader | Object<br>Class | ✓ | Logic to send the file to your storage of choice<br>See below for specific information. Works seamlessly with edgee:slingshot directives.
-sizes | [Object] | ✗ | Thumbnail configuration for image files
-invalid | Bool | ✗ | Whether the input is valid or not
-id | String | ✗ | Id attribute for DOM reference
-className | String | ✗ | Class attribute for custom styling
+| Prop        | Type                | Required<br>Default | Description                                                                                                                               |
+| ----------- | ------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| label       | String<br>Component | ✗                   | Label to display above the file input                                                                                                     |
+| placeholder | String              | ✗                   | Label to display inside the file input                                                                                                    |
+| name        | String              | ✓                   | Name attribute of the file input element                                                                                                  |
+| multiple    | Bool                | false               | Allow multiple files to be selected for upload                                                                                            |
+| uploader    | Object<br>Class     | ✓                   | Logic to send the file to your storage of choice<br>See below for specific information. Works seamlessly with edgee:slingshot directives. |
+| sizes       | [Object]            | ✗                   | Thumbnail configuration for image files                                                                                                   |
+| invalid     | Bool                | ✗                   | Whether the input is valid or not                                                                                                         |
+| id          | String              | ✗                   | Id attribute for DOM reference                                                                                                            |
+| className   | String              | ✗                   | Class attribute for custom styling                                                                                                        |
+| metaData    | Object              | ✗                   | Optional metadata to add to the file                                                                                                      |
 
 ### Upload handler class
 
@@ -116,14 +117,14 @@ Check edgee:slingshot documentation on how to set up directives.
 
 When you use the uploader to upload images, you can make this component to attempt creating thumbnails client-side. you can specify them through the `sizes` prop.
 
-Key | Type | Required<br>Default | Description
---- | --- | --- | ---
-label | String | ✓ | Prefix for this thumbnail, easy to reference later<br>E.g. `square-sm`, `banner-lg`, …
-width | Integer | ✓ | Width of thumbnail
-height | Integer | ✓ | Height of thumbnail
-crop | Bool | false | Whether the image should be cropped or resized<br>If crop isn't `true`, width and height act as maximal dimensions; one edge of the thumbnail will be smaller to fit within specified size.
-quality | Number | 60 | Image quality between .25 and 1 or 25 and 100 %<br>Numbers greater than 100 set the quality to maximum (100 %).
-retina | Bool | false | Create a retina version of the current thumbnail<br>Size: double; Quality: 80 % of set quality.
+| Key     | Type    | Required<br>Default | Description                                                                                                                                                                                 |
+| ------- | ------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| label   | String  | ✓                   | Prefix for this thumbnail, easy to reference later<br>E.g. `square-sm`, `banner-lg`, …                                                                                                      |
+| width   | Integer | ✓                   | Width of thumbnail                                                                                                                                                                          |
+| height  | Integer | ✓                   | Height of thumbnail                                                                                                                                                                         |
+| crop    | Bool    | false               | Whether the image should be cropped or resized<br>If crop isn't `true`, width and height act as maximal dimensions; one edge of the thumbnail will be smaller to fit within specified size. |
+| quality | Number  | 60                  | Image quality between .25 and 1 or 25 and 100 %<br>Numbers greater than 100 set the quality to maximum (100 %).                                                                             |
+| retina  | Bool    | false               | Create a retina version of the current thumbnail<br>Size: double; Quality: 80 % of set quality.                                                                                             |
 
 The `label` of the size props will be used as a prefix for the uploaded thumbnail. The above examples will be stored as follows: `https://your.cdn/uploader/square-sm/filename.jpeg`
 
@@ -133,13 +134,13 @@ After a succesful upload, the file is passed to the `onChange` handler on the co
 
 **Note:** when the attribute `multiple` is set on the uploader, the onChange handler is called for every file.
 
-Key | Type | Description
---- | --- | --- | ---
-name | String | Unique filename for all uploaded files
-url | String | success from the `send` callback, most likely the full url to the uploaded original
-local | Blob | use this to display the image in the preview to prevent bandwidth usage by downloading the uploaded file from `url` immediately after upload. **Note:** do not save this value in your database.
-isImage | Bool | Whether the uploaded file was seen as an image
-error | String | If an error occured during the process, it will appear here
+| Key     | Type   | Description                                                                                                                                                                                      |
+| ------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| name    | String | Unique filename for all uploaded files                                                                                                                                                           |
+| url     | String | success from the `send` callback, most likely the full url to the uploaded original                                                                                                              |
+| local   | Blob   | use this to display the image in the preview to prevent bandwidth usage by downloading the uploaded file from `url` immediately after upload. **Note:** do not save this value in your database. |
+| isImage | Bool   | Whether the uploaded file was seen as an image                                                                                                                                                   |
+| error   | String | If an error occured during the process, it will appear here                                                                                                                                      |
 
 ## Image processing
 
@@ -163,14 +164,14 @@ Example: a user selects 4 images and a pdf. The configuration requests 2 thumbna
 
 ## Configuration
 
-Prop | Type | Required<br>Default | Description
---- | --- | --- | ---
-name | String | '' | Name of the file
-url | String | '' | Url of preview (image)<br>If no preview is available, the file type will be shown instead.
-local | String | '' | Urlstring of the local image, overrides url if present
-error | String | '' | Display an error message instead of the preview
-children | Component | ✗ | Extend preview functionality to remove, sort, …
-extras | Component | ✗ | Optional children below the filename<br>Use this prop to add e.g. alt-tag and/or copyright information after upload.
+| Prop     | Type      | Required<br>Default | Description                                                                                                          |
+| -------- | --------- | ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| name     | String    | ''                  | Name of the file                                                                                                     |
+| url      | String    | ''                  | Url of preview (image)<br>If no preview is available, the file type will be shown instead.                           |
+| local    | String    | ''                  | Urlstring of the local image, overrides url if present                                                               |
+| error    | String    | ''                  | Display an error message instead of the preview                                                                      |
+| children | Component | ✗                   | Extend preview functionality to remove, sort, …                                                                      |
+| extras   | Component | ✗                   | Optional children below the filename<br>Use this prop to add e.g. alt-tag and/or copyright information after upload. |
 
 ### Children
 
