@@ -1,6 +1,6 @@
 {
   "name": "@lefapps/uploader",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React package for translations and cms",
   "main": "./lib/index.js",
   "scripts": {
